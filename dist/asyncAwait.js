@@ -1,33 +1,33 @@
 "use strict";
-// function ambilData(): Promise<string> {
-//     return new Promise((x) => {
-//         setTimeout(() => {
-//             x("Data berhasil diambil");
-//         }, 3000);
-//     });
-// }
 Object.defineProperty(exports, "__esModule", { value: true });
-// async function main(): Promise<void> {
-//     console.log("Mulai");
-//     const hasil = await ambilData();
-//     console.log(hasil);
-//     console.log("Selesai");
-// }
-// main();
-console.log('mulai');
-function person(nama) {
-    setTimeout(() => {
-        console.log(`nama orang ini adalah ${nama}`);
-    }, 3000);
+function absen(nama, hadir) {
+    return new Promise((diterima, ditolak) => {
+        setTimeout(() => {
+            if (hadir === true) {
+                diterima(`siswa bernama ${nama} telah hadir`);
+            }
+            else {
+                ditolak(`siswa bernama ${nama} belum hadir`);
+            }
+        }, 3000);
+    });
 }
-async function main() {
-    const hasil = await person('varel');
-}
-function selesai() {
-    setTimeout(() => {
+async function prosesAbsen() {
+    try {
+        const varel = await absen('varel', true);
+        console.log('berhasil:', varel);
+        const owen = await absen('owen', true);
+        console.log('berhasil:', owen);
+        const alex = await absen('alex', false);
+        console.log('berhasil:', alex);
+    }
+    catch (x) {
+        console.log('ditolak:', x);
+    }
+    finally {
         console.log('selesai');
-    }, 5000);
+    }
 }
-main();
-selesai();
+console.log('Mulai');
+prosesAbsen();
 //# sourceMappingURL=asyncAwait.js.map

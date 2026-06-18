@@ -1,39 +1,32 @@
-// function ambilData(): Promise<string> {
-//     return new Promise((x) => {
-//         setTimeout(() => {
-//             x("Data berhasil diambil");
-//         }, 3000);
-//     });
-// }
-
-// async function main(): Promise<void> {
-//     console.log("Mulai");
-
-//     const hasil = await ambilData();
-
-//     console.log(hasil);
-//     console.log("Selesai");
-// }
-
-// main();
-
-
-console.log('mulai')
-function person(nama:string){
-    setTimeout(() => {
-        console.log(`nama orang ini adalah ${nama}`)
-    }, 3000);
-}
-async function main() {
-    const hasil = await person('varel');
+function absen(nama: string, hadir: boolean): Promise<string> {
+    return new Promise((diterima, ditolak) => {
+        setTimeout(() => {
+            if (hadir === true) {
+                diterima(`siswa bernama ${nama} telah hadir`);
+            } else {
+                ditolak(`siswa bernama ${nama} belum hadir`);
+            }
+        }, 3000);
+    });
 }
 
+async function prosesAbsen() {
+    try{
+        const varel = await absen('varel', true);
+        console.log('berhasil:', varel);
+        
+        const owen = await absen('owen', true);
+        console.log('berhasil:', owen);
 
-function selesai (){
-    setTimeout(() => {
-        console.log('selesai')
-    }, 5000);
+        const alex = await absen('alex', false);
+        console.log('berhasil:', alex);
+    }catch (x){
+        console.log('ditolak:', x)
+    } finally {
+        console.log('selesai');
+    }
 }
 
-main()
-selesai()
+console.log('Mulai');
+
+prosesAbsen();
