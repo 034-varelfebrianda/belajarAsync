@@ -20,6 +20,9 @@ async function prosesAbsen() {
 
         const alex = await absen('alex', false);
         console.log('berhasil:', alex);
+
+        const ruth = await absen('ruth', true); //tidak muncul karena alex bersifat false dan telah berhenti karna adanya catch
+        console.log ('berhasil: ', ruth)
     }catch (x){
         console.log('ditolak:', x)
     } finally {
