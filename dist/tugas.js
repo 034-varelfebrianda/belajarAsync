@@ -9,5 +9,33 @@
 // siswa bernama Varel belum hadir
 Object.defineProperty(exports, "__esModule", { value: true });
 function absen(nama, hadir) {
+    return new Promise((diterima, ditolak) => {
+        setTimeout(() => {
+            if (hadir === true) {
+                diterima(`${nama} berhasil login`);
+            }
+            else {
+                ditolak(`${nama} belum absen`);
+            }
+        }, 2000);
+    });
 }
+async function prosesAbsen() {
+    try {
+        const varel = await absen('varel', true);
+        console.log('berhasil :', varel);
+        const owen = await absen('owen', true);
+        console.log('berhasil :', owen);
+        const alex = await absen('alex', false);
+        console.log('gagal :', alex);
+    }
+    catch (x) {
+        console.log('tidak absen', x);
+    }
+    finally {
+        console.log('selesai');
+    }
+}
+console.log('mulai');
+prosesAbsen();
 //# sourceMappingURL=tugas.js.map
