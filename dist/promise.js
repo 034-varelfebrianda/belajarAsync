@@ -1,28 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function tambah(param1, param2) {
-    return param1 + param2;
+function absen(nama, hadir) {
+    return new Promise((diterima, ditolak) => {
+        setTimeout(() => {
+            if (hadir === true) {
+                diterima(`siswa bernama ${nama} telah hadir`);
+            }
+            else {
+                ditolak(`siswa bernama ${nama} belum hadir`);
+            }
+        }, 3000);
+    });
 }
-function kurang(param1, param2) {
-    return param1 - param2;
-}
-function hitung(param1, param2, aksi) {
-    return aksi(param1, param2);
-}
-const p = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        const hasil = hitung(1, 2, tambah);
-        resolve(hasil);
-    }, 1000);
-});
-p.then((value) => {
-    return value;
-})
-    .then((val) => {
-    return tambah(val, 3);
-})
-    .then((val) => {
-    const value = tambah(val, 4);
-    console.log(value);
-});
+absen('varel', true)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
+absen('alex', false)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
+absen('owen', true)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
+console.log('Mulai');
+setTimeout(() => {
+    console.log('selesai');
+}, 4000);
 //# sourceMappingURL=promise.js.map

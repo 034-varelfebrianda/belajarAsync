@@ -1,33 +1,30 @@
-function tambah(param1: number, param2: number): number {
-    return param1 + param2;
+function absen(nama:string, hadir:boolean):Promise<string>{
+    return new Promise((
+        diterima:(x:string)=>void,
+        ditolak:(x:string)=>void,) =>{
+            setTimeout(()=>{
+                if(hadir===true){
+                    diterima(`siswa bernama ${nama} telah hadir`)
+        }else {
+            ditolak(`siswa bernama ${nama} belum hadir`)
+        }},3000);
+    }
+)
 }
+absen('varel',true)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
 
-function kurang(param1: number, param2: number): number {
-    return param1 - param2;
-}
+absen('alex',false)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
 
-function hitung(
-    param1: number,
-    param2: number,
-    aksi: (a: number, b: number) => number
-): number {
-    return aksi(param1, param2);
-}
+absen('owen',true)
+    .then((hasil) => console.log('berhasil:', hasil))
+    .catch((error) => console.log('ditolak:', error));
 
-const p = new Promise<number>((resolve, reject) => {
-    setTimeout(() => {
-        const hasil = hitung(1, 2, tambah);
-        resolve(hasil);
-    }, 1000);
-});
+console.log('Mulai');
 
-p.then((value: number) => {
-    return value;
-})
-.then((val: number) => {
-    return tambah(val, 3);
-})
-.then((val: number) => {
-    const value = tambah(val, 4);
-    console.log(value);
-});
+setTimeout(() => {
+    console.log('selesai')
+}, 4000);

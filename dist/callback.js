@@ -1,16 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function tambah(param1, param2) {
-    return param1 + param2;
+function absen(diterima, ditolak) {
+    let hadir = true;
+    if (hadir) {
+        diterima('siswa telah hadir');
+    }
+    else {
+        ditolak('siswa belum hadir');
+    }
 }
-function kurang(param1, param2) {
-    return param1 - param2;
-}
-function hitung(param1, param2, aksi) {
-    let hasil = 0;
-    hasil = aksi(param1, param2);
-    return hasil;
-}
-console.log(hitung(3, 2, tambah));
-console.log(hitung(3, 2, kurang));
+absen((hasil) => {
+    console.log('berhasil', hasil);
+}, (error) => {
+    console.log('ditolak', error);
+});
+//callback bagus digunakan saat isi paramerter nya 2
 //# sourceMappingURL=callback.js.map

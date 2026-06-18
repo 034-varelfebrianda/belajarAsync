@@ -1,16 +1,21 @@
-function tambah (param1: number,param2: number){
-    return param1 + param2
+function absen (
+    diterima:(x:string)=>void,
+    ditolak:(x:string)=>void
+    ):void{
+    let hadir:boolean = true
+    if(hadir){
+        diterima('siswa telah hadir')
+    }else {
+        ditolak('siswa belum hadir')
+    }
 }
 
-function kurang (param1:number,param2:number){
-    return param1 - param2
-}
+absen(
+    (hasil:string):void =>{
+        console.log('berhasil',hasil)
+    },(error:string):void =>{
+        console.log('ditolak',error)
+    }
+)
 
-function hitung (param1:number,param2:number,aksi:any){
-let hasil = 0;
-hasil = aksi(param1,param2)
-return hasil 
-}
-
-console.log(hitung(3,2,tambah))
-console.log(hitung(3,2,kurang))
+//callback bagus digunakan saat isi paramerter nya 2
